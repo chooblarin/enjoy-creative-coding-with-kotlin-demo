@@ -9,7 +9,7 @@ version = "1.0.0"
 val applicationMainClass = "TemplateProgramKt"
 
 /**  ## additional ORX features to be added to this project */
-val orxFeatures = setOf<String>(
+val orxFeatures = setOf(
 //  "orx-boofcv",
     "orx-camera",
 //  "orx-chataigne",
@@ -47,7 +47,7 @@ val orxFeatures = setOf<String>(
 //  "orx-osc",
 //  "orx-palette",
     "orx-panel",
-//  "orx-parameters",
+    "orx-parameters",
 //  "orx-poisson-fill",
 //  "orx-property-watchers",
 //  "orx-quadtree",
