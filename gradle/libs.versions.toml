@@ -1,12 +1,13 @@
 [versions]
-kotlin = "1.9.22"
-openrndr = "0.4.4"
-orx = "0.4.4"
+kotlin = "2.0.0"
+openrndr = "0.4.5-alpha4"
+orx = "0.4.5-alpha4"
+orsl = "0.4.5-alpha4"
 orml = "0.4.1"
 
-slf4j = "2.0.10"
-log4j = "2.22.1"
-jackson = "2.16.1"
+slf4j = "2.0.13"
+log4j = "2.23.1"
+jackson = "2.17.1"
 
 [libraries]
 kotlin-script-runtime = { group = "org.jetbrains.kotlin", name = "kotlin-script-runtime", version.ref = "kotlin" }
