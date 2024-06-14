@@ -2,7 +2,7 @@ package brownian_motion
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.extra.gui.GUI
+import org.openrndr.extra.gui.WindowedGUI
 import org.openrndr.extra.noise.scatter
 import org.openrndr.extra.noise.uniform
 import org.openrndr.extra.parameters.DoubleParameter
@@ -19,7 +19,7 @@ fun main() = application {
             var step = 1.0
         }
 
-        val gui = GUI()
+        val gui = WindowedGUI()
         gui.add(params, "Parameters")
 
         var points = drawer.bounds.scatter(5.0)
