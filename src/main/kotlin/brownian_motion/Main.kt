@@ -1,6 +1,7 @@
 package brownian_motion
 
 import org.openrndr.application
+import org.openrndr.color.ColorRGBa
 import org.openrndr.extra.gui.GUI
 import org.openrndr.extra.noise.scatter
 import org.openrndr.extra.noise.uniform
@@ -25,7 +26,10 @@ fun main() = application {
 
         extend(gui)
         extend {
-            drawer.circles(points, 2.0)
+            drawer.clear(ColorRGBa.WHITE)
+            drawer.stroke = null
+            drawer.fill = ColorRGBa.BLACK.opacify(0.2)
+            drawer.circles(points, 3.0)
 
             val next = points.map {
                 val rnd = Vector2.uniform(-1.0, 1.0)
