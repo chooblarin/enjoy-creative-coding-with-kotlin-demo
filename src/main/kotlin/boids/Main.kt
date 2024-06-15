@@ -55,6 +55,14 @@ fun main() = application {
 
             quadtree = nextTree
             lastTime = seconds
+
+            // Draw quadtree
+            if (Simulation.Parameters.showQuadtree) {
+                drawer.fill = null
+                drawer.stroke = ColorRGBa.GRAY.opacify(0.5)
+                drawer.strokeWeight = 0.5
+                quadtree.draw(drawer)
+            }
         }
     }
 }

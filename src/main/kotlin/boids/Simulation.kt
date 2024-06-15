@@ -1,5 +1,6 @@
 package boids
 
+import org.openrndr.extra.parameters.BooleanParameter
 import org.openrndr.extra.parameters.DoubleParameter
 import org.openrndr.shape.Rectangle
 
@@ -32,5 +33,8 @@ object Simulation {
 
         @DoubleParameter("boid perception radius", 1.0, 200.0)
         var boidPerceptionRadius = 50.0
+
+        @BooleanParameter("show quadtree")
+        var showQuadtree: Boolean = false
     }
 }
