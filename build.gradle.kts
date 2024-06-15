@@ -51,7 +51,7 @@ val orxFeatures = setOf(
     "orx-parameters",
 //  "orx-poisson-fill",
 //  "orx-property-watchers",
-//  "orx-quadtree",
+    "orx-quadtree",
 //  "orx-rabbit-control",
 //  "orx-realsense2",
 //  "orx-runway",
