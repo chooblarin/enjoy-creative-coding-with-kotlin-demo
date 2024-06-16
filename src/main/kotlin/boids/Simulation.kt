@@ -16,13 +16,13 @@ object Simulation {
         const val WALL_AVOIDANCE_FACTOR = 5e3
     }
     object Parameters {
-        @DoubleParameter("separation", 0.0, 2500.0, order = 0)
-        var separationFactor = 250.0
+        @DoubleParameter("separation", 0.0, 100.0, order = 0)
+        var separationFactor = 25.0
 
         @DoubleParameter("alignment", 0.0, 5.0, order = 1)
         var alignmentFactor = 0.75
 
-        @DoubleParameter("cohesion", 0.0, 0.5, order = 2)
+        @DoubleParameter("cohesion", 0.0, 1.0, order = 2)
         var cohesionFactor = 0.05
 
         @DoubleParameter("boid scale", 0.5, 10.0)

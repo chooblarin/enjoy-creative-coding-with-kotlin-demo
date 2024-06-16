@@ -15,9 +15,7 @@ class Boid(
     override fun interact(neighbors: List<Agent>) {
         forces.clear()
 
-        val areaWidth = Simulation.Settings.AREA_WIDTH
-        val areaHeight = Simulation.Settings.AREA_HEIGHT
-        val wallAvoidance = avoidWall(areaWidth, areaHeight)
+        val wallAvoidance = avoidWall()
         forces.add(wallAvoidance)
 
         val separation = separation(neighbors) * Simulation.Parameters.separationFactor
@@ -50,7 +48,10 @@ class Boid(
         velocity = newVelocity
     }
 
-    private fun avoidWall(areaWidth: Double, areaHeight: Double): Vector2 {
+    private fun avoidWall(): Vector2 {
+        val areaWidth = Simulation.Settings.AREA_WIDTH
+        val areaHeight = Simulation.Settings.AREA_HEIGHT
+
         var force = Vector2.ZERO
         val dmin = 10e-6
 
@@ -69,16 +70,27 @@ class Boid(
         return force * Simulation.Settings.WALL_AVOIDANCE_FACTOR
     }
 
-    private fun separation(neighbors: List<Agent>): Vector2 = neighbors.fold(Vector2.ZERO) { acc, n ->
-        val distance = position - n.position
-        acc + distance.normalized * (1.0 / distance.squaredLength)
+    private fun separation(neighbors: List<Agent>): Vector2 {
+        if (neighbors.isEmpty()) {
+            return Vector2.ZERO
+        }
+        return neighbors.fold(Vector2.ZERO) { acc, n ->
+            val diff = position - n.position
+            acc + diff.normalized / diff.length
+        }
     }
 
-    private fun alignment(neighbors: List<Agent>): Vector2 = neighbors.fold(Vector2.ZERO) { acc, n ->
-        val theta = atan2(n.velocity.y, n.velocity.x)
-        val unit = Vector2(cos(theta), sin(theta))
-        acc + unit
+    private fun alignment(neighbors: List<Agent>): Vector2 {
+        if (neighbors.isEmpty()) {
+            return Vector2.ZERO
+        }
+        return neighbors.fold(Vector2.ZERO) { acc, n ->
+            val theta = atan2(n.velocity.y, n.velocity.x)
+            val unit = Vector2(cos(theta), sin(theta))
+            acc + unit
+        }
     }
+
 
     private fun cohesion(neighbors: List<Agent>): Vector2 {
         if (neighbors.isEmpty()) {
