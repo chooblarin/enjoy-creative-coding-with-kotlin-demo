@@ -17,6 +17,7 @@ fun main() = application {
     configure {
         width = Simulation.Settings.AREA_WIDTH.toInt()
         height = Simulation.Settings.AREA_HEIGHT.toInt()
+        windowAlwaysOnTop = true
     }
     program {
         val gui = WindowedGUI()
@@ -34,11 +35,11 @@ fun main() = application {
 
         val molds = List(Simulation.Settings.MOLD_COUNT) { createRandomMold() }
 
-        backgroundColor = ColorRGBa.WHITE
-
         extend(gui)
 
         extend {
+            backgroundColor = if (Simulation.Parameters.invertColor) ColorRGBa.WHITE else ColorRGBa.BLACK
+
             // Diffuse and decay
             diffuse.apply(trailTarget.colorBuffer(0), trailTarget.colorBuffer(0))
             decay.apply(trailTarget.colorBuffer(0), trailTarget.colorBuffer(0))
@@ -69,7 +70,10 @@ fun main() = application {
                 }
             }
 
-            drawer.drawStyle.colorMatrix = invert
+            if (Simulation.Parameters.invertColor) {
+                drawer.drawStyle.colorMatrix = invert
+            }
+
             drawer.image(trailTarget.colorBuffer(0))
         }
     }

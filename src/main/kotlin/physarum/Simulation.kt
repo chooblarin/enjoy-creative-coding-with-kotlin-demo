@@ -1,5 +1,6 @@
 package physarum
 
+import org.openrndr.extra.parameters.BooleanParameter
 import org.openrndr.extra.parameters.DoubleParameter
 import org.openrndr.extra.parameters.OptionParameter
 import kotlin.math.PI
@@ -32,6 +33,9 @@ object Simulation {
 
         @OptionParameter("Mold Display Mode")
         var option = MoldDisplayMode.Circle
+
+        @BooleanParameter("Invert Color")
+        var invertColor = true
     }
 }
 
